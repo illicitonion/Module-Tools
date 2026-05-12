@@ -42,7 +42,7 @@ jobs:
         shell: bash
       - name: test implement-cowsay
         id: test-implement-cowsay
-        if: contains(join(steps.changed-files.outputs.modified_files, '\n'), 'implement-cowsay/')
+        #if: contains(join(steps.changed-files.outputs.modified_files, '\n), 'implement-cowsay/')
         run: ./test-sdc.sh implement-cowsay
         shell: bash
       - name: make output comment
