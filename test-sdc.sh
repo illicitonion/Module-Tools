@@ -148,14 +148,14 @@ elif [[ "$1" == "implement-cowsay" ]]; then
       python3 implement-cowsay/cow.py Grass, delicious > test.tmp
       cmp test.tmp expect/implement-cowsay/cow-grass.txt
       if [ $? -ne 0 ]; then
-        echo "Unexpected cowsay output for Grass, delicious" >> testoutput.txt
+        echo "Unexpected cowsay output for 'Grass, delicious'." >> testoutput.txt
         all_ok=false
       fi
 
       python3 implement-cowsay/cow.py --animal turtle "Fish are cool!" > test.tmp
       cmp test.tmp expect/implement-cowsay/turtle-fish.txt
       if [ $? -ne 0 ]; then
-        echo "Unexpected cowsay output for Fish are cool!" >> testoutput.txt
+        echo "Unexpected cowsay output for --animal turtle Fish are cool!" >> testoutput.txt
         all_ok=false
       fi
 

@@ -12,8 +12,9 @@ parser.add_argument("message", nargs="+", help="The message to say.")
 args = parser.parse_args()
 
 message = " ".join(args.message)
+# dragon
 
 if (args.animal):
     print(cowsay.get_output_string(args.animal, message))
 else:
-    print(cowsay.get_output_string('dragon', message))
+    print(cowsay.get_output_string('cow', message))
