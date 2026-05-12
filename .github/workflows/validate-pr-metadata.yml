@@ -40,16 +40,9 @@ jobs:
         if: contains(steps.changed-files.outputs.modified_files, 'number-systems/')
         run: ./test-sdc.sh number-systems
         shell: bash
-      - name: debug printing
-        env:
-          ALL_MODIFIED_FILES: ${{ steps.changed-files.outputs.all_modified_files }}
-          MODIFIED_FILES: ${{ steps.changed-files.outputs.modified_files }}
-          ALL_CHANGED_AND_MODIFIED_FILES: ${{ steps.changed-files.outputs.all_changed_and_modified_files }}
-
-        run: env
       - name: test implement-cowsay
         id: test-implement-cowsay
-        if: contains(join(steps.changed-files.outputs.modified_files, '\n'), 'implement-cowsay/')
+        if: contains(steps.changed-files.outputs.all_modified_files, 'implement-cowsay/')
         run: bash -x ./test-sdc.sh implement-cowsay
         shell: bash
       - name: make output comment
