@@ -5,7 +5,7 @@
 # You can run this file using ./test-sdc.sh task-directory-name to check your output
 
 echo "<!--CYFTT tag: sdc-test-results-->" > testoutput.txt
-echo "Results of test" >> testoutput.txt
+echo "Results of test:" >> testoutput.txt
 
 if [[ "$1" == "individual-shell-tools" ]]; then
 	cd individual-shell-tools
