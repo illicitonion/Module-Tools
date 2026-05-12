@@ -42,7 +42,7 @@ jobs:
         shell: bash
       - name: debug printing
         env:
-          MODIFIED_FILES: ${{ join(steps.changed-files.outputs.modified_files, '\n') }}
+          MODIFIED_FILES: ${{ join(steps.changed-files.outputs.all_changed_and_modified_files, '\n') }}
         run: echo $MODIFIED_FILES
       - name: test implement-cowsay
         id: test-implement-cowsay
