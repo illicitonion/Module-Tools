@@ -46,7 +46,7 @@ jobs:
       - name: test implement-cowsay
         id: test-implement-cowsay
         #if: contains(join(steps.changed-files.outputs.modified_files, '\n), 'implement-cowsay/')
-        run: ./test-sdc.sh implement-cowsay
+        run: bash -x ./test-sdc.sh implement-cowsay
         shell: bash
       - name: make output comment
         if: steps.test-individual-shell-tools.outputs.attempted == 'y' || steps.test-jq.outputs.attempted == 'y' || steps.test-shell-pipelines.outputs.attempted == 'y' || steps.test-number-systems.outputs.attempted == 'y' || steps.test-implement-cowsay.outputs.attempted == 'y'
