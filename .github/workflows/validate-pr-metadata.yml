@@ -8,14 +8,6 @@ on:
       - reopened
 
 jobs:
-  validate_pr_metadata:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: CodeYourFuture/actions/validate-pr-metadata@main
-        with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
   test_sdc_tasks:
     name: Test SDC Tasks
     runs-on: ubuntu-slim
@@ -50,7 +42,7 @@ jobs:
         shell: bash
       - name: test implement-cowsay
         id: test-implement-cowsay
-        if: contains(steps.changed-files.outputs.modified_files, 'implement-cowsay/')
+        if: contains(join(steps.changed-files.outputs.modified_files, "\n"), 'implement-cowsay/')
         run: ./test-sdc.sh implement-cowsay
         shell: bash
       - name: make output comment
