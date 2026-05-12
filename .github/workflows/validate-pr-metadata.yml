@@ -42,11 +42,11 @@ jobs:
         shell: bash
       - name: debug printing
         env:
-          MODIFIED_FILES: ${{ join(steps.changed-files.outputs.modified_files, '\n) }}
+          MODIFIED_FILES: ${{ join(steps.changed-files.outputs.modified_files, '\n') }}
           run: echo $MODIFIED_FILES
       - name: test implement-cowsay
         id: test-implement-cowsay
-        if: contains(join(steps.changed-files.outputs.modified_files, '\n), 'implement-cowsay/')
+        if: contains(join(steps.changed-files.outputs.modified_files, '\n'), 'implement-cowsay/')
         run: bash -x ./test-sdc.sh implement-cowsay
         shell: bash
       - name: make output comment
