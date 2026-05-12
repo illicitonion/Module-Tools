@@ -43,7 +43,7 @@ jobs:
       - name: debug printing
         env:
           MODIFIED_FILES: ${{ join(steps.changed-files.outputs.modified_files, '\n') }}
-          run: echo $MODIFIED_FILES
+        run: echo $MODIFIED_FILES
       - name: test implement-cowsay
         id: test-implement-cowsay
         if: contains(join(steps.changed-files.outputs.modified_files, '\n'), 'implement-cowsay/')
