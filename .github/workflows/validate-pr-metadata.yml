@@ -6,7 +6,6 @@ on:
       - opened
       - edited
       - reopened
-      - synchronize
 
 jobs:
   test_sdc_tasks:
@@ -14,9 +13,7 @@ jobs:
     runs-on: ubuntu-slim
     permissions:
       pull-requests: write
-    env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      ISSUE_URL: ${{ github.event.pull_request.html_url }}
+    if: ${{ github.event.label.name == 'Needs Review' }}
     steps:
       - name: checkout base branch
         uses: actions/checkout@v5
@@ -57,6 +54,9 @@ jobs:
           gh pr comment $ISSUE_URL --body-file testoutput.txt
       - name: add appropriate labels
         if: steps.test-individual-shell-tools.outputs.complete == 'y' || steps.test-jq.outputs.complete == 'y' || steps.test-shell-pipelines.outputs.complete == 'y' || steps.test-implement-cowsay.outputs.complete == 'y'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ISSUE_URL: ${{ github.event.pull_request.html_url }}
         run: |
           gh pr edit $ISSUE_URL --add-label "Complete"
           gh pr edit $ISSUE_URL --remove-label "Needs Review"
