@@ -174,7 +174,6 @@ elif [[ "$1" == "implement-cowsay" ]]; then
       if [ -v GITHUB_OUTPUT ]; then
         if [[ "${all_ok}" == "true" ]]; then
           echo "complete=y" >> "$GITHUB_OUTPUT"
-		else
           echo "Your implementation passed all checks." >> testoutput.txt
         fi
       fi
