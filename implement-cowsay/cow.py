@@ -16,4 +16,4 @@ message = " ".join(args.message)
 if (args.animal):
     print(cowsay.get_output_string(args.animal, message))
 else:
-    print(cowsay.get_output_string('cow', message))
+    print(cowsay.get_output_string('dragon', message))
